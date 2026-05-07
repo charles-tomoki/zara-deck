@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ZARA | Análisis Estratégico</title>
+    <style>
+        /* Variables y tipografía inspirada en marcas de moda */
+        :root {
+            --primary-black: #000000;
+            --primary-white: #ffffff;
+            --accent-gray: #f5f5f5;
+            --text-dark: #222222;
+            --text-light: #666666;
+            --zara-blue: #0000ff; /* Acento sutil corporativo Inditex */
+        }
+
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Roboto:wght@300;400;700&display=swap');
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Roboto', sans-serif;
+            background-color: var(--primary-white);
+            color: var(--text-dark);
+            line-height: 1.6;
+        }
+
+        /* Tipografía Serif para títulos (Estilo Editorial / Moda) */
+        h1, h2, h3 {
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+            margin: 0;
+        }
+
+        /* Header / Nav */
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background-color: var(--primary-white);
+            border-bottom: 1px solid #eaeaea;
+            padding: 20px 0;
+            text-align: center;
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            letter-spacing: -2px;
+            font-weight: 700;
+            text-transform: uppercase;
+        }
+
+        nav {
+            margin-top: 15px;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: var(--text-light);
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin: 0 15px;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: var(--primary-black);
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 80vh;
+            background-color: var(--accent-gray);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            text-align: center;
+            margin-top: 100px;
+            background-image: linear-gradient(rgba(255,255,255,0.8), rgba(255,255,255,0.8)), url('https://images.unsplash.com/photo-1445205170230-053b83016050?ixlib=rb-1.2.1&auto=format&fit=crop&w=1951&q=80');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            letter-spacing: 2px;
+            margin-bottom: 20px;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 600px;
+            color: var(--text-light);
+        }
+
+        /* Secciones Generales */
+        section {
+            padding: 80px 10%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 60px;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 50px;
+            height: 2px;
+            background-color: var(--primary-black);
+            margin: 20px auto 0;
+        }
+
+        /* Layouts de Contenido */
+        .grid-2 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .text-block p {
+            margin-bottom: 20px;
+            color: var(--text-light);
+            font-weight: 300;
+        }
+
+        /* Visión, Misión y Valores */
+        .mission-vision-container {
+            background-color: var(--primary-black);
+            color: var(--primary-white);
+            padding: 80px 10%;
+        }
+
+        .mv-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 40px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .mv-card {
+            border-top: 1px solid rgba(255,255,255,0.3);
+            padding-top: 20px;
+        }
+
+        .mv-card h3 {
+            font-family: 'Roboto', sans-serif;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 15px;
+            color: #aaaaaa;
+        }
+
+        .mv-card p, .mv-card ul {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.3rem;
+            line-height: 1.4;
+        }
+
+        .mv-card ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .mv-card li {
+            margin-bottom: 10px;
+        }
+
+        /* Portfolio */
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 30px;
+        }
+
+        .portfolio-card {
+            background-color: var(--accent-gray);
+            padding: 40px 20px;
+            text-align: center;
+            transition: transform 0.3s;
+        }
+
+        .portfolio-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .portfolio-card h3 {
+            margin-bottom: 15px;
+            font-size: 1.5rem;
+        }
+
+        .portfolio-card p {
+            font-size: 0.9rem;
+            color: var(--text-light);
+        }
+
+        /* Cobertura de Mercado & Porter */
+        .analytics-box {
+            border: 1px solid #eaeaea;
+            padding: 40px;
+            margin-bottom: 40px;
+        }
+
+        .analytics-box h3 {
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+        }
+
+        .stat-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            margin-top: 30px;
+            border-top: 1px solid #eaeaea;
+            padding-top: 30px;
+        }
+
+        .stat-item h4 {
+            font-family: 'Roboto', sans-serif;
+            font-size: 3rem;
+            margin: 0;
+            color: var(--primary-black);
+        }
+
+        .stat-item p {
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--text-light);
+            margin: 0;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--accent-gray);
+            padding: 40px 10%;
+            text-align: center;
+            font-size: 0.8rem;
+            color: var(--text-light);
+            letter-spacing: 1px;
+        }
+
+        @media (max-width: 768px) {
+            .grid-2, .mv-grid, .portfolio-grid, .stat-grid {
+                grid-template-columns: 1fr;
+            }
+            .hero h1 { font-size: 3rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header>
+        <div class="logo">ZARA</div>
+        <nav>
+            <a href="#empresa">La Empresa</a>
+            <a href="#identidad">Identidad</a>
+            <a href="#portfolio">Portafolio</a>
+            <a href="#mercado">Mercado & Porter</a>
+        </nav>
+    </header>
+
+    <!-- Hero -->
+    <section class="hero">
+        <h1>Análisis Estratégico</h1>
+        <p>Estudio descriptivo del modelo de negocio, cobertura global y análisis del entorno competitivo (Fuerzas de Porter).</p>
+    </section>
+
+    <!-- Presentación de la Empresa -->
+    <section id="empresa">
+        <h2 class="section-title">Presentación de la Empresa</h2>
+        <div class="grid-2">
+            <div class="text-block">
+                <p><strong>Fundada en 1975 en España</strong>, la idea original de Zara fue presentar productos de bajo precio similares a los de alta gama y la moda popular, lo que los hizo destacar y progresar en el mercado. En 1985 nace Inditex, el conglomerado textil del cual forma parte, con el objetivo de romper el modelo de la época al fabricar internamente la mayoría de sus productos.</p>
+                <p>Esta fabricación interna permitió reducir tiempos de producción y adaptar la demanda a la oferta real, dando origen al concepto que hoy conocemos como <em>fast fashion</em>.</p>
+                <p>Zara es una empresa global que no se limita a exportar, sino que produce, distribuye y coordina a nivel mundial. Combina la fabricación en Europa (España, Portugal, Turquía) con producción en Asia y otros mercados internacionales a través de una cadena logística global hiperconectada.</p>
+            </div>
+            <div class="analytics-box" style="background-color: var(--primary-black); color: white; border: none;">
+                <h3 style="color: white; border-bottom: 1px solid rgba(255,255,255,0.3); padding-bottom: 20px;">Presencia Física</h3>
+                <div class="stat-grid" style="border-top: none;">
+                    <div class="stat-item">
+                        <h4 style="color: white;">93</h4>
+                        <p style="color: #aaa;">Mercados Globales</p>
+                    </div>
+                    <div class="stat-item">
+                        <h4 style="color: white;">2000+</h4>
+                        <p style="color: #aaa;">Locales Físicos</p>
+                    </div>
+                    <div class="stat-item">
+                        <h4 style="color: white;">1351</h4>
+                        <p style="color: #aaa;">Tiendas en Europa</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Misión, Visión, Valores -->
+    <section id="identidad" class="mission-vision-container">
+        <div class="mv-grid">
+            <div class="mv-card">
+                <h3>Visión (Inferida)</h3>
+                <p>Consolidarse como líder mundial en la industria de fast fashion, llegando a todos los mercados con diseños actuales y accesibles.</p>
+            </div>
+            <div class="mv-card">
+                <h3>Misión (Inferida)</h3>
+                <p>Ofrecer moda accesible, atractiva y en tendencia a nivel global de manera rápida y desarrollada de manera responsable.</p>
+            </div>
+            <div class="mv-card">
+                <h3>Valores Alineados</h3>
+                <ul>
+                    <li>Sostenibilidad</li>
+                    <li>Calidad</li>
+                    <li>Ética y Transparencia</li>
+                    <li>Orientación al Cliente</li>
+                    <li>Innovación</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Portfolio -->
+    <section id="portfolio">
+        <h2 class="section-title">Descripción del Portafolio</h2>
+        <div class="portfolio-grid">
+            <div class="portfolio-card">
+                <h3>Indumentaria</h3>
+                <p>El núcleo del negocio. Líneas para Mujer, Hombre y Niños (segmentado por edades desde 0 a 14 años). Abarca desde sastrería y denim hasta básicos.</p>
+            </div>
+            <div class="portfolio-card">
+                <h3>Accesorios y Calzado</h3>
+                <p>Diseñados para complementar los looks de cada colección. Incluye zapatos, carteras, mochilas, lentes de sol y bisutería.</p>
+            </div>
+            <div class="portfolio-card">
+                <h3>Belleza</h3>
+                <p>Incorporación de perfumes que abarcan desde fragancias frescas y livianas hasta opciones intensas inspiradas en alta gama.</p>
+            </div>
+            <div class="portfolio-card">
+                <h3>Zara Home</h3>
+                <p>Extensión hacia el hogar. Incluye ropa de cama, toallas, velas, vajilla y objetos decorativos minimalistas.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Cobertura y Porter -->
+    <section id="mercado">
+        <h2 class="section-title">Cobertura y Entorno Competitivo</h2>
+        
+        <div class="analytics-box">
+            <h3>Cobertura Omnicanal</h3>
+            <div class="text-block">
+                <p><strong>Físico:</strong> En etapa de consolidación a través de la táctica de <em>"store optimization"</em>. Se cierran locales pequeños para abrir tiendas bandera (flagships) de gran formato en arterias principales. Presente en ~96 mercados, expandiéndose recientemente a territorios como Uzbekistán.</p>
+                <p><strong>Digital:</strong> Ventas online en más de 200 mercados globales. El Sistema Integrado de Gestión del Inventario (SINT) permite que el stock de la tienda física esté 100% integrado a la venta web, logrando respuesta ágil ante los patrones de demanda.</p>
+            </div>
+        </div>
+
+        <div class="analytics-box">
+            <h3>Fuerzas de Porter: El Sector Industrial</h3>
+            <div class="text-block">
+                <p>Zara opera en el retail textil global, dentro del <strong>fast fashion</strong>, aunque recientemente se ha desplazado hacia el concepto de aspiración premium o <em>"masstige"</em>.</p>
+                <p><strong>Nivel de concentración:</strong> El sector global es muy fragmentado (diseñadores, comercio informal, marketplaces). Sin embargo, en el segmento de moda rápida hay una alta concentración competitiva alrededor de gigantes como Inditex, H&M, Shein, Uniqlo y Primark. La competencia es intensa y exige gran escala, capacidad logística y omnicanalidad.</p>
+                <p><strong>Dimensión:</strong> En el ejercicio 2025, Inditex reportó ventas por €39.864 millones, de las cuales Zara (incluyendo Zara Home y Lefties) representó €28.051 millones, confirmando su rol de motor central del grupo.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>Trabajo Práctico Universitario - Etapa Descriptiva Zara</p>
+        <p>Información extraída estrictamente del documento fuente.</p>
+    </footer>
+
+    <!-- Script para scroll suave -->
+    <script>
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+</body>
+</html>
